@@ -1,4 +1,4 @@
 # Simple-Classification
-Just for have fun
+Just for having fun
 
 This is simple classification models (random forest and logistic regression)
