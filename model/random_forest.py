@@ -17,11 +17,10 @@ with open("your data") as data:
 df = pandas.DataFrame.from_dict(data)
 #sort table columns
 df = df[['id', 'title', 'subtitle', 'date', 'text', 'tag', 'label']]
-#print(df)
+
 
 #convert label to numerical label
 factor = pandas.factorize(df['label'])
-#print(factor)
 df.label = factor[0]
 definition = factor[1]
 
@@ -30,6 +29,7 @@ x = df.iloc[:,4].values
 #change 'label' column to new variable (y)
 y = df.iloc[:,6].values
 
+#splitting data into training data (60%) and testing data (40%)
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.40, random_state = 21)
 
 # #uncomment script below if you want to use count vector as your feature
