@@ -6,7 +6,7 @@ from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFacto
 from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
 
 #open data
-with open('data name', encoding='utf-8', errors='ignore') as a:
+with open('JSON file', encoding='utf-8', errors='ignore') as a:
   data1 = json.load(a)
 
 #create stopword remover
