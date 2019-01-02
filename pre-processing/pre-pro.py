@@ -45,7 +45,7 @@ for line in data1:
   sortdict = sorted(merge, key = lambda i: datetime.strptime(i["date"], "%d/%m/%Y, %H:%M WIB"))
 
 #write new file for model
-with open('test.json', 'w') as fp:
+with open('new json file', 'w') as fp:
     json.dump(sortdict, fp)
 
 a.close()
