@@ -28,15 +28,26 @@ train_x, test_x, train_y, test_y = train_test_split(df['text'], df['label'], tes
 # #uncomment script below if you want to use count vector as your feature
 # count_vect = CountVectorizer(analyzer='char', ngram_range=(2,3), max_features=2000)
 # count_vect.fit(df['text'])
-# #print(count_vect)
 # x_train =  count_vect.fit_transform(x_train)
 # x_test =  count_vect.transform(x_test)
+
+# #uncomment script below if you want to pickle features and using later
+# #writing features file for testing new raw data
+# feat = open("features.pkl", 'wb')
+# pickle.dump(count_vect, feat)
+# feat.close()
 
 #uncomment script below if you want to use tfidf as your feature
 tfidf_vect_ngram = TfidfVectorizer(analyzer='char', ngram_range=(2,3), token_pattern=r'\w{1,}', max_features=2000)
 tfidf_vect_ngram.fit(df['text'])
 train_x =  tfidf_vect_ngram.transform(train_x)
 test_x =  tfidf_vect_ngram.transform(test_x)
+
+# #uncomment script below if you want to pickle features and using later
+# #writing features file for testing new raw data
+# feat = open("features.pkl", 'wb')
+# pickle.dump(tfidf_vect_ngram, feat)
+# feat.close()
 
 #train Logistic Regression Classifier with training data
 classifier = linear_model.LogisticRegression()

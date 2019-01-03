@@ -32,18 +32,29 @@ y = df.iloc[:,6].values
 #splitting data into training data (60%) and testing data (40%)
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.40, random_state = 21)
 
-# #uncomment script below if you want to use count vector as your feature
-# count_vect = CountVectorizer(analyzer='char', ngram_range=(2,3), max_features=2000)
-# count_vect.fit(df['text'])
-# #print(count_vect)
-# x_train =  count_vect.fit_transform(x_train)
-# x_test =  count_vect.transform(x_test)
+#uncomment script below if you want to use count vector as your feature
+count_vect = CountVectorizer(analyzer='char', ngram_range=(2,3), max_features=2000)
+count_vect.fit(df['text'])
+x_train =  count_vect.fit_transform(x_train)
+x_test =  count_vect.transform(x_test)
 
-#uncomment script below if you want to use tfidf as your feature
-tfidf_vect_ngram = TfidfVectorizer(analyzer='word', smooth_idf=True,ngram_range=(2,3), token_pattern=r'\w{1,}', max_features=2000)
-tfidf_vect_ngram.fit(df['text'])
-x_train =  tfidf_vect_ngram.transform(x_train)
-x_test =  tfidf_vect_ngram.transform(x_test)
+# #uncomment script below if you want to pickle features and using later
+# #writing features file for testing new raw data
+# feat = open("features.pkl", 'wb')
+# pickle.dump(count_vect, feat)
+# feat.close()
+
+# #uncomment script below if you want to use tfidf as your feature
+# tfidf_vect_ngram = TfidfVectorizer(analyzer='word', smooth_idf=True,ngram_range=(2,3), token_pattern=r'\w{1,}', max_features=2000)
+# tfidf_vect_ngram.fit(df['text'])
+# x_train =  tfidf_vect_ngram.transform(x_train)
+# x_test =  tfidf_vect_ngram.transform(x_test)
+
+# #uncomment script below if you want to pickle features and using later
+# #writing features file for testing new raw data
+# feat = open("features.pkl", 'wb')
+# pickle.dump(tfidf_vect_ngram, feat)
+# feat.close()
 
 #train Random Forest Classifier with training data
 classifier = RandomForestClassifier(n_estimators= 10, criterion='entropy', random_state=42)
