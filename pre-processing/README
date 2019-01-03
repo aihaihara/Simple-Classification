@@ -2,4 +2,4 @@ compatible for python 3.6.7
 
 this pre-processing was made specifically for JSON files
 
-install Sastrawi for stemming and removing stopwords https://pypi.org/project/PySastrawi/
+install Sastrawi for stemming and removing stopwords (Bahasa only) https://pypi.org/project/PySastrawi/
